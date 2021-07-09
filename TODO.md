@@ -1,6 +1,5 @@
 - `exps/fn`
 - `exps/ap`
-- `exps/var`
 
 # reading
 
