@@ -1,9 +1,12 @@
-- 实现 dance with expressions
+- `exps/fn`
+- `exps/ap`
+- `exps/var`
 
 # reading
 
-- 重读 to mock a mocking bird
-- 读 diagonalization-and-self-reference
+- to mock a mocking bird
+- diagonalization-and-self-reference
+- curry haskell's book
 
 # problem
 
