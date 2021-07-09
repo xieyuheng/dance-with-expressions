@@ -23,9 +23,7 @@ export class Ap extends Exp {
     return new Ap(this.target.subst(name, exp), this.arg.subst(name, exp))
   }
 
-  private multi_ap(
-    args: Array<Exp> = new Array()
-  ): {
+  private multi_ap(args: Array<Exp> = new Array()): {
     target: Exp
     args: Array<Exp>
   } {
