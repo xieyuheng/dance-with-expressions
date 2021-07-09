@@ -1,4 +1,4 @@
-- `exps/ap`
+- `syntax/`
 
 # reading
 
