@@ -1,7 +1,9 @@
-- `stmt/`
 - `module/`
 - `env/`
-- `stmts/`
+- `exp/let`
+- `stmts/def`
+- `stmts/show`
+- `stmts/import`
 - `syntax/`
 
 # reading
