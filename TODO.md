@@ -1,5 +1,4 @@
 - `library.load`
-- `stmts/import`
 - `syntax/`
 
 - test by cli
