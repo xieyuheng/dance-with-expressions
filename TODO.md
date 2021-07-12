@@ -1,5 +1,3 @@
-- `exps/let` -- `evaluate`
-
 - `syntax/`
 
 - `stmts/import`

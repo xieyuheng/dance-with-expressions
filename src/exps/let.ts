@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import { Exp, evaluate } from "../exp"
 import { Env } from "../env"
 import * as Exps from "../exps"
 import * as ut from "../ut"
@@ -23,7 +23,8 @@ export class Let extends Exp {
   }
 
   evaluate(env: Env): Exp {
-    throw new Error("TODO")
+    const exp = evaluate(env, this.exp)
+    return evaluate(env, this.ret.subst(this.name, exp))
   }
 
   subst(name: string, exp: Exp): Exp {
