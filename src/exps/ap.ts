@@ -1,5 +1,6 @@
-import { Exp } from "../exp"
+import { Exp, evaluate } from "../exp"
 import { Env } from "../env"
+import { Trace } from "../errors"
 import * as Exps from "../exps"
 import * as ut from "../ut"
 
@@ -25,7 +26,21 @@ export class Ap extends Exp {
   }
 
   evaluate(env: Env): Exp {
-    throw new Error("TODO")
+    const target = evaluate(env, this.target)
+    const arg = evaluate(env, this.arg)
+    if (target instanceof Exps.Fn) {
+      return target.ret.subst(target.name, arg)
+    } else {
+      throw new Trace(
+        [
+          `I can not apply target because it is not a function.`,
+          `target:`,
+          `  ${target.repr()}`,
+          `arg:`,
+          `  ${arg.repr()}`,
+        ].join("\n")
+      )
+    }
   }
 
   private multi_ap(args: Array<Exp> = new Array()): {

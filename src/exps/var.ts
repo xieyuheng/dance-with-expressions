@@ -19,8 +19,8 @@ export class Var extends Exp {
   }
 
   evaluate(env: Env): Exp {
-    const result = env.lookup_value(this.name)
-    if (result === undefined) {
+    const exp = env.lookup_value(this.name)
+    if (exp === undefined) {
       throw new Trace(
         [
           `Fail to evaluate a variable.`,
@@ -29,7 +29,7 @@ export class Var extends Exp {
       )
     }
 
-    return result
+    return exp
   }
 
   subst(name: string, exp: Exp): Exp {

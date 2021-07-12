@@ -1,4 +1,3 @@
-- `exps/ap` -- `evaluate`
 - `exps/let` -- `evaluate`
 - `exps/fn` -- `evaluate`
 
