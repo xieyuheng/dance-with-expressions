@@ -1,9 +1,13 @@
-- `exp/evaluate`
 - `stmts/def`
 - `stmts/show`
 - `stmts/import`
 - `syntax/`
 - `library/` -- fix `module/`
+
+- `exps/ap` -- `evaluate`
+- `exps/let` -- `evaluate`
+- `exps/var` -- `evaluate`
+- `exps/fn` -- `evaluate`
 
 # reading
 

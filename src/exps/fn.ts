@@ -1,4 +1,5 @@
 import { Exp } from "../exp"
+import { Env } from "../env"
 import * as Exps from "../exps"
 import * as ut from "../ut"
 
@@ -27,6 +28,10 @@ export class Fn extends Exp {
       const ret = this.ret.subst(this.name, new Exps.Var(fresh_name))
       return new Fn(fresh_name, ret.subst(name, exp))
     }
+  }
+
+  evaluate(env: Env): Exp {
+    throw new Error("TODO")
   }
 
   private multi_fn(names: Array<string> = new Array()): {

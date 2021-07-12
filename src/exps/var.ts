@@ -1,4 +1,5 @@
 import { Exp } from "../exp"
+import { Env } from "../env"
 
 export class Var extends Exp {
   name: string
@@ -14,6 +15,10 @@ export class Var extends Exp {
     } else {
       return new Set([this.name])
     }
+  }
+
+  evaluate(env: Env): Exp {
+    throw new Error("TODO")
   }
 
   subst(name: string, exp: Exp): Exp {

@@ -1,4 +1,5 @@
 import { Exp } from "../exp"
+import { Env } from "../env"
 import * as Exps from "../exps"
 import * as ut from "../ut"
 
@@ -19,6 +20,10 @@ export class Let extends Exp {
       ...this.exp.free_names(bound_names),
       ...this.ret.free_names(new Set([...bound_names, this.name])),
     ])
+  }
+
+  evaluate(env: Env): Exp {
+    throw new Error("TODO")
   }
 
   subst(name: string, exp: Exp): Exp {

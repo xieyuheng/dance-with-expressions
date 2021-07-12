@@ -1,4 +1,5 @@
 import { Exp } from "../exp"
+import { Env } from "../env"
 import * as Exps from "../exps"
 import * as ut from "../ut"
 
@@ -21,6 +22,10 @@ export class Ap extends Exp {
 
   subst(name: string, exp: Exp): Exp {
     return new Ap(this.target.subst(name, exp), this.arg.subst(name, exp))
+  }
+
+  evaluate(env: Env): Exp {
+    throw new Error("TODO")
   }
 
   private multi_ap(args: Array<Exp> = new Array()): {
