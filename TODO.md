@@ -1,5 +1,7 @@
 - `syntax/`
 
+- test by cli
+
 - `stmts/import`
 - `library/` -- fix `module/`
 
