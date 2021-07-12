@@ -1,9 +1,8 @@
+- `library.load`
+- `stmts/import`
 - `syntax/`
 
 - test by cli
-
-- `stmts/import`
-- `library/` -- fix `module/`
 
 # reading
 

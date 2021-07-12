@@ -1,3 +1,4 @@
+import { Library } from "../library"
 import { Stmt } from "../stmt"
 import { Env } from "../env"
 
@@ -12,16 +13,22 @@ class ModuleEntry {
 }
 
 // NOTE
-// - a module knows which library it belongs to -- TODO
+// - a module knows which library it belongs to
 // - one doc one module, loaded modules are cached
 // - the loading order of docs matters
 // - no recursion
 
 export class Module {
+  library: Library
   env: Env
   entries: Array<ModuleEntry>
 
-  constructor(opts: { env?: Env; entries?: Array<ModuleEntry> }) {
+  constructor(opts: {
+    library: Library
+    env?: Env
+    entries?: Array<ModuleEntry>
+  }) {
+    this.library = opts.library
     this.env = opts.env || new Env()
     this.entries = opts.entries || []
   }
