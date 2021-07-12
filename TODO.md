@@ -1,4 +1,3 @@
-- `stmts/show`
 - `stmts/import`
 - `syntax/`
 - `library/` -- fix `module/`
