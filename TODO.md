@@ -1,4 +1,4 @@
-- `module/`
+- `library/`
 - `exp/let`
 - `stmts/def`
 - `stmts/show`
