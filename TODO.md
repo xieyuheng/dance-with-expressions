@@ -1,4 +1,14 @@
-- `library.load`
+- review the design of `Library` `Module` `Doc`
+
+
+- abstract `Doc`
+
+- `ExpDoc`
+- `MdDoc`
+
+- abstract `Library`
+- `LocalLibrary`
+
 - `syntax/`
 
 - test by cli
