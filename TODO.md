@@ -1,9 +1,9 @@
-- `library/`
-- `exp/let`
+- `exp/evaluate`
 - `stmts/def`
 - `stmts/show`
 - `stmts/import`
 - `syntax/`
+- `library/` -- fix `module/`
 
 # reading
 
