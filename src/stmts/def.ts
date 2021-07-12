@@ -1,7 +1,6 @@
 import { Stmt } from "../stmt"
 import { Module } from "../module"
-import { Exp } from "../exp"
-// import { evaluate } from "../core"
+import { Exp, evaluate } from "../exp"
 
 export class Def implements Stmt {
   name: string
@@ -13,7 +12,7 @@ export class Def implements Stmt {
   }
 
   async execute(mod: Module): Promise<void> {
-    // mod.env = mod.env.extend(this.name, evaluate(mod.env, inferred.core))
+    mod.env = mod.env.extend(this.name, evaluate(mod.env, this.exp))
     mod.enter(this)
   }
 }

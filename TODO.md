@@ -1,4 +1,3 @@
-- `stmts/def`
 - `stmts/show`
 - `stmts/import`
 - `syntax/`
