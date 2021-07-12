@@ -1,5 +1,4 @@
 - `module/`
-- `env/`
 - `exp/let`
 - `stmts/def`
 - `stmts/show`
