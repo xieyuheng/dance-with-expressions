@@ -1,6 +1,7 @@
 - `stmt/`
+- `module/`
+- `env/`
 - `stmts/`
-
 - `syntax/`
 
 # reading
