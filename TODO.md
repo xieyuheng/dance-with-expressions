@@ -1,5 +1,4 @@
 - `exps/let` -- `evaluate`
-- `exps/fn` -- `evaluate`
 
 - `syntax/`
 

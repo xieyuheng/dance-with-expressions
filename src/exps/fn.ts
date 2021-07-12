@@ -31,7 +31,7 @@ export class Fn extends Exp {
   }
 
   evaluate(env: Env): Exp {
-    throw new Error("TODO")
+    return this
   }
 
   private multi_fn(names: Array<string> = new Array()): {

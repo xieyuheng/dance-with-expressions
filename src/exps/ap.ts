@@ -29,7 +29,8 @@ export class Ap extends Exp {
     const target = evaluate(env, this.target)
     const arg = evaluate(env, this.arg)
     if (target instanceof Exps.Fn) {
-      return target.ret.subst(target.name, arg)
+      const ret = target.ret.subst(target.name, arg)
+      return evaluate(env, ret)
     } else {
       throw new Trace(
         [
