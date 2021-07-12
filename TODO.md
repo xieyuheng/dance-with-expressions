@@ -1,11 +1,11 @@
-- `stmts/import`
-- `syntax/`
-- `library/` -- fix `module/`
-
 - `exps/ap` -- `evaluate`
 - `exps/let` -- `evaluate`
-- `exps/var` -- `evaluate`
 - `exps/fn` -- `evaluate`
+
+- `syntax/`
+
+- `stmts/import`
+- `library/` -- fix `module/`
 
 # reading
 

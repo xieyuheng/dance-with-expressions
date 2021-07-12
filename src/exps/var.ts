@@ -1,5 +1,6 @@
 import { Exp } from "../exp"
 import { Env } from "../env"
+import { Trace } from "../errors"
 
 export class Var extends Exp {
   name: string
@@ -18,7 +19,17 @@ export class Var extends Exp {
   }
 
   evaluate(env: Env): Exp {
-    throw new Error("TODO")
+    const result = env.lookup_value(this.name)
+    if (result === undefined) {
+      throw new Trace(
+        [
+          `Fail to evaluate a variable.`,
+          `The name ${this.name} is undefined.`,
+        ].join("\n")
+      )
+    }
+
+    return result
   }
 
   subst(name: string, exp: Exp): Exp {
