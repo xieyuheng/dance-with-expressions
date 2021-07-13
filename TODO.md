@@ -1,9 +1,7 @@
-- `docs/md-doc`
-
 - abstract `Library`
 - `LocalLibrary`
 
-- `syntax/`
+- `syntax/` -- fix `md-doc` and `exp-doc`
 
 - test by cli
 
