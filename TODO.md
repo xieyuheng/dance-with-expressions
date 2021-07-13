@@ -2,6 +2,8 @@
 
 - change reduction strategy for strong normalization
 
+- be able to `step` exp
+
 # reading
 
 - to mock a mocking bird
