@@ -1,8 +1,3 @@
-- review the design of `Library` `Module` `Doc`
-
-
-- abstract `Doc`
-
 - `ExpDoc`
 - `MdDoc`
 
@@ -12,6 +7,10 @@
 - `syntax/`
 
 - test by cli
+
+- extract `@cicada-lang/librarian`
+
+  - refactor the classes to make them a framework
 
 # reading
 
