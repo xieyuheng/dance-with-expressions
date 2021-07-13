@@ -1,5 +1,4 @@
-- `ExpDoc`
-- `MdDoc`
+- `docs/md-doc`
 
 - abstract `Library`
 - `LocalLibrary`
