@@ -1,6 +1,9 @@
 id(x) { x }
 
-f(x) { id(x) }
+f(x) {
+  y = id(x)
+  id(y)
+}
 
 id(id)
 f(f)(id)
