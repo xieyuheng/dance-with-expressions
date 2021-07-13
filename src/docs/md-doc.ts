@@ -1,6 +1,6 @@
 import { Doc, DocEntry } from "../doc"
 import { Library } from "../library"
-// import * as Syntax from "../syntax"
+import * as Syntax from "../syntax"
 import * as commonmark from "commonmark"
 
 export class MdDoc extends Doc {
@@ -16,13 +16,11 @@ export class MdDoc extends Doc {
   }
 
   get entries(): Array<DocEntry> {
-    throw new Error("TODO")
-
-    // return this.code_blocks.flatMap((code_block) =>
-    //   Syntax.parse_stmts(code_block.text, code_block.offset).map(
-    //     (stmt) => new DocEntry({ stmt })
-    //   )
-    // )
+    return this.code_blocks.flatMap((code_block) =>
+      Syntax.parse_stmts(code_block.text, code_block.offset).map(
+        (stmt) => new DocEntry({ stmt })
+      )
+    )
   }
 
   private offset_from_pos(row: number, col: number): number {

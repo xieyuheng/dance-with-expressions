@@ -1,10 +1,8 @@
-- `syntax/` -- fix `md-doc` and `exp-doc`
-
 - test by cli
 
-- extract `@cicada-lang/librarian`
+- [refactor] move `Module.from_doc` to `doc.load`
 
-  - refactor the classes to make them a framework
+- extract `@cicada-lang/librarian`
 
 # reading
 

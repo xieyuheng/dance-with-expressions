@@ -1,6 +1,6 @@
 import { Doc, DocEntry } from "../doc"
 import { Library } from "../library"
-// import * as Syntax from "../syntax"
+import * as Syntax from "../syntax"
 
 export class ExpDoc extends Doc {
   library: Library
@@ -15,8 +15,7 @@ export class ExpDoc extends Doc {
   }
 
   get entries(): Array<DocEntry> {
-    throw new Error("TODO")
-    // const stmts = Syntax.parse_stmts(this.text)
-    // return stmts.map((stmt) => new DocEntry({ stmt }))
+    const stmts = Syntax.parse_stmts(this.text)
+    return stmts.map((stmt) => new DocEntry({ stmt }))
   }
 }
