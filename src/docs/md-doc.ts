@@ -42,7 +42,7 @@ export class MdDoc extends Doc {
       node = event.node
 
       if (event.entering && node.type === "code_block") {
-        if (node.literal && node.info === "cicada") {
+        if (node.literal && node.info === "exp") {
           const [start_pos, _end_pos] = node.sourcepos
           const [row, col] = start_pos
           code_blocks.push({
