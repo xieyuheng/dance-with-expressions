@@ -1,5 +1,3 @@
-- test by cli
-
 - [refactor] move `Module.from_doc` to `doc.load`
 
 - extract `@cicada-lang/librarian`
