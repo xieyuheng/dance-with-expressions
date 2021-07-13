@@ -32,45 +32,13 @@ export function declaration_matcher(tree: pt.Tree): Exp {
   return pt.matcher<Exp>({
     "declaration:let": ({ name, exp, ret }) =>
       new Exps.Let(pt.str(name), exp_matcher(exp), exp_matcher(ret)),
-    "declaration:let_fn": ({ name, bindings, ret, body }) => {
-      const fn = bindings_matcher(bindings)
+    "declaration:let_fn": ({ name, names, ret, body }) => {
+      const fn = names_matcher(names)
         .reverse()
-        .flatMap(({ names }) => names.reverse())
-        .reduce((fn, name) => new Exps.Fn(name, fn), exp_matcher(ret))
+        .reduce((result, name) => new Exps.Fn(name, result), exp_matcher(ret))
 
       return new Exps.Let(pt.str(name), fn, exp_matcher(body))
     },
-  })(tree)
-}
-
-export function bindings_matcher(
-  tree: pt.Tree
-): Array<{ names: Array<string>; exp: Exp }> {
-  return pt.matcher({
-    "bindings:bindings": ({ entries, last_entry }) => [
-      ...pt.matchers.zero_or_more_matcher(entries).map(binding_entry_matcher),
-      binding_entry_matcher(last_entry),
-    ],
-  })(tree)
-}
-
-export function binding_entry_matcher(tree: pt.Tree): {
-  names: Array<string>
-  exp: Exp
-} {
-  return pt.matcher({
-    "binding_entry:nameless": ({ exp }) => ({
-      names: ["_"],
-      exp: exp_matcher(exp),
-    }),
-    "binding_entry:named": ({ name, exp }) => ({
-      names: [pt.str(name)],
-      exp: exp_matcher(exp),
-    }),
-    "binding_entry:multi_named": ({ names, exp }) => ({
-      names: pt.matchers.one_or_more_matcher(names).map(pt.str),
-      exp: exp_matcher(exp),
-    }),
   })(tree)
 }
 

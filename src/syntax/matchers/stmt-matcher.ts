@@ -2,7 +2,7 @@ import pt from "@cicada-lang/partech"
 import { Stmt } from "../../stmt"
 import * as Stmts from "../../stmts"
 import * as Exps from "../../exps"
-import { exp_matcher, operator_matcher, bindings_matcher } from "../matchers"
+import { exp_matcher, operator_matcher, names_matcher } from "../matchers"
 
 export function stmts_matcher(tree: pt.Tree): Array<Stmt> {
   return pt.matcher({
@@ -15,11 +15,10 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
   return pt.matcher<Stmt>({
     "stmt:def": ({ name, exp }) =>
       new Stmts.Def(pt.str(name), exp_matcher(exp)),
-    "stmt:def_fn": ({ name, bindings, ret_t, ret }) => {
-      const fn = bindings_matcher(bindings)
+    "stmt:def_fn": ({ name, names, ret_t, ret }) => {
+      const fn = names_matcher(names)
         .reverse()
-        .flatMap(({ names }) => names.reverse())
-        .reduce((fn, name) => new Exps.Fn(name, fn), exp_matcher(ret))
+        .reduce((result, name) => new Exps.Fn(name, result), exp_matcher(ret))
 
       return new Stmts.Def(pt.str(name), fn)
     },

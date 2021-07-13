@@ -27,7 +27,7 @@ export const declaration = {
     "declaration:let_fn": [
       { name: "identifier" },
       '"("',
-      { bindings: "bindings" },
+      { names: "names" },
       '")"',
       '"{"',
       { ret: "exp" },
@@ -41,28 +41,6 @@ export const exp = {
   $grammar: {
     "exp:operator": [{ operator: "operator" }],
     "exp:declaration": [{ declaration: "declaration" }],
-  },
-}
-
-export const bindings = {
-  $grammar: {
-    "bindings:bindings": [
-      { entries: { $ap: ["zero_or_more", "binding_entry", '","'] } },
-      { last_entry: "binding_entry" },
-      { $ap: ["optional", '","'] },
-    ],
-  },
-}
-
-export const binding_entry = {
-  $grammar: {
-    "binding_entry:nameless": [{ exp: "exp" }],
-    "binding_entry:named": [{ name: "identifier" }, '":"', { exp: "exp" }],
-    "binding_entry:multi_named": [
-      { names: { $ap: ["one_or_more", "identifier"] } },
-      '":"',
-      { exp: "exp" },
-    ],
   },
 }
 

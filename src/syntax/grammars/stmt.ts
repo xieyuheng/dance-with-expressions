@@ -10,7 +10,7 @@ export const stmt = {
     "stmt:def_fn": [
       { name: "identifier" },
       '"("',
-      { bindings: "bindings" },
+      { names: "names" },
       '")"',
       '"{"',
       { ret: "exp" },

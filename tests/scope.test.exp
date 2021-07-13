@@ -1,0 +1,6 @@
+id(x) { x }
+
+f(x) { id(x) }
+
+id(id)
+f(f)(id)
