@@ -1,6 +1,3 @@
-- `LocalLibrary`
-- `SingleFileLibrary`
-
 - `syntax/` -- fix `md-doc` and `exp-doc`
 
 - test by cli

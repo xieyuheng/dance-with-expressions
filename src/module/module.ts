@@ -1,5 +1,6 @@
 import { Library } from "../library"
 import { Stmt } from "../stmt"
+import { Doc } from "../doc"
 import { Env } from "../env"
 
 class ModuleEntry {
@@ -20,17 +21,23 @@ class ModuleEntry {
 
 export class Module {
   library: Library
+  doc: Doc
   env: Env
   entries: Array<ModuleEntry>
 
-  constructor(opts: {
-    library: Library
-    env?: Env
-    entries?: Array<ModuleEntry>
-  }) {
-    this.library = opts.library
+  constructor(opts: { doc: Doc; env?: Env; entries?: Array<ModuleEntry> }) {
+    this.doc = opts.doc
+    this.library = opts.doc.library
     this.env = opts.env || new Env()
     this.entries = opts.entries || []
+  }
+
+  static async from_doc(doc: Doc): Promise<Module> {
+    const mod = new Module({ doc: doc })
+    for (const { stmt } of doc.entries) {
+      await stmt.execute(mod)
+    }
+    return mod
   }
 
   enter(stmt: Stmt, opts?: { output?: string }): void {
