@@ -1,7 +1,3 @@
-- [refactor] move `Module.from_doc` to `doc.load`
-
-- extract `@cicada-lang/librarian`
-
 # reading
 
 - to mock a mocking bird
