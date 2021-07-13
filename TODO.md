@@ -1,5 +1,5 @@
-- abstract `Library`
 - `LocalLibrary`
+- `SingleFileLibrary`
 
 - `syntax/` -- fix `md-doc` and `exp-doc`
 
