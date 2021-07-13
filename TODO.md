@@ -1,3 +1,5 @@
+- use `@cicada-lang/librarian`
+
 # reading
 
 - to mock a mocking bird
