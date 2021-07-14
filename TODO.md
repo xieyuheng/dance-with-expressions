@@ -4,6 +4,8 @@
 
 - be able to `step` exp
 
+- use lean to prove classic theorems about lambda calculus
+
 # reading
 
 - to mock a mocking bird
