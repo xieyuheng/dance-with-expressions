@@ -32,12 +32,8 @@ pow(m, n) {
   n(m)
 }
 
-id(x) { x }
-
-zero
-
 one
-add1(one)
+add1(zero)
 
-two
 three
+add1(add1(add1(zero)))

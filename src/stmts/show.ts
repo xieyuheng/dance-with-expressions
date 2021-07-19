@@ -10,7 +10,7 @@ export class Show implements Stmt {
   }
 
   async execute(mod: Module): Promise<void> {
-    const exp = evaluate(mod.env, this.exp)
+    const exp = this.exp.normalize(mod.env)
     mod.enter(this, { output: exp.repr() })
   }
 }
