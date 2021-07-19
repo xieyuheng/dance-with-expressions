@@ -44,6 +44,10 @@ export class Let extends Exp {
     return evaluate(env, this.ret.subst(this.name, exp))
   }
 
+  beta_step(): Exp {
+    throw new Error("TODO")
+  }
+
   repr(): string {
     return `let ${this.name} = ${this.exp.repr()} ${this.ret.repr()}`
   }

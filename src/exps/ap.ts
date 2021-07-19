@@ -45,6 +45,14 @@ export class Ap extends Exp {
     }
   }
 
+  beta_step(): Exp {
+    if (this.target instanceof Exps.Fn) {
+      return this.target.ret.subst(this.target.name, this.arg)
+    } else {
+      throw new Error("TODO")
+    }
+  }
+
   private multi_ap(args: Array<Exp> = new Array()): {
     target: Exp
     args: Array<Exp>

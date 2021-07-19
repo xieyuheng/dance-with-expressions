@@ -40,6 +40,10 @@ export class Var extends Exp {
     return exp
   }
 
+  beta_step(): Exp {
+    return this
+  }
+
   repr(): string {
     return this.name
   }

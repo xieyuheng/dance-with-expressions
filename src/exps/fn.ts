@@ -36,6 +36,10 @@ export class Fn extends Exp {
     return this
   }
 
+  beta_step(): Exp {
+    return new Fn(this.name, this.ret.beta_step())
+  }
+
   private multi_fn(names: Array<string> = new Array()): {
     names: Array<string>
     ret: Exp
