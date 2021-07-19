@@ -1,11 +1,10 @@
-- `Exp.normalized_p`
+- fix `beta_reduction_step`
 
-  - 有一些 variable 可能是全局变量，
-    所以当看到一个 variable 的时候，要先判断它是不是全局变量，
-    只有非全局变量才是 normalized_p，
-    全局变量还可以被 step。
+  - beta_reduction_step 的第二个分支要判断 target 是否已经是 normal form，
+    如果是，就 reduce arg，否则就不 reduce arg，
+    以保持「每个 step 最多只消除一个 reduction target」这个不变量。
 
-- `Exp.normalize` by `beta_reduction_step` and `normalized_p` and a while loop
+- `Exp.normalize` by `beta_reduction_step` and `normal_form_p` and a while loop
 
 - be able to `eta_reduction_step` exp
 

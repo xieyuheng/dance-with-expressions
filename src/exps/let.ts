@@ -31,7 +31,11 @@ export class Let extends Exp {
       //   so that, it will not bound free names of the `exp`.
       free_names = new Set([...free_names, ...exp.free_names()])
       const fresh_name = ut.freshen_name(free_names, this.name)
-      const ret = this.ret.subst(free_names, this.name, new Exps.Var(fresh_name))
+      const ret = this.ret.subst(
+        free_names,
+        this.name,
+        new Exps.Var(fresh_name)
+      )
       return new Let(
         fresh_name,
         this.exp.subst(free_names, name, exp),
@@ -47,6 +51,12 @@ export class Let extends Exp {
 
   beta_reduction_step(env: Env): Exp {
     return this.ret.subst(env.free_names(), this.name, this.exp)
+  }
+
+  normal_form_p(env: Env): boolean {
+    // NOTE A "let" expression can always be reduced,
+    //   thus it is not normal form.
+    return false
   }
 
   repr(): string {

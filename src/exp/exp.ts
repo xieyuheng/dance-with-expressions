@@ -8,7 +8,7 @@ export abstract class Exp {
   abstract evaluate(env: Env): Exp
   abstract beta_reduction_step(env: Env): Exp
   // abstract eta_reduction_step(env: Env): Exp
-  // abstract normalized_p(env: Env): boolean
+  abstract normal_form_p(env: Env): boolean
   // abstract normalize(env: Env): Exp
   abstract repr(): string
 }

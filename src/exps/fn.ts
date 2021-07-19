@@ -28,7 +28,11 @@ export class Fn extends Exp {
       //   so that, it will not bound free names of the `exp`.
       free_names = new Set([...free_names, ...exp.free_names()])
       const fresh_name = ut.freshen_name(free_names, this.name)
-      const ret = this.ret.subst(free_names, this.name, new Exps.Var(fresh_name))
+      const ret = this.ret.subst(
+        free_names,
+        this.name,
+        new Exps.Var(fresh_name)
+      )
       return new Fn(fresh_name, ret.subst(free_names, name, exp))
     }
   }
@@ -39,6 +43,10 @@ export class Fn extends Exp {
 
   beta_reduction_step(env: Env): Exp {
     return new Fn(this.name, this.ret.beta_reduction_step(env))
+  }
+
+  normal_form_p(env: Env): boolean {
+    return this.ret.normal_form_p(env)
   }
 
   private multi_fn(names: Array<string> = new Array()): {

@@ -56,6 +56,14 @@ export class Ap extends Exp {
     }
   }
 
+  normal_form_p(env: Env): boolean {
+    return (
+      this.target.normal_form_p(env) &&
+      !(this.target instanceof Exps.Fn) &&
+      this.arg.normal_form_p(env)
+    )
+  }
+
   private multi_ap(args: Array<Exp> = new Array()): {
     target: Exp
     args: Array<Exp>

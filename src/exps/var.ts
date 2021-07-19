@@ -44,9 +44,21 @@ export class Var extends Exp {
     const exp = env.lookup_exp(this.name)
     if (exp === undefined) {
       return this
+    } else {
+      return exp
     }
+  }
 
-    return exp
+  normal_form_p(env: Env): boolean {
+    // NOTE Some variables are global to the module.
+    // A global variable can still be reduced,
+    //   thus it is not normal form.
+    const exp = env.lookup_exp(this.name)
+    if (exp === undefined) {
+      return true
+    } else {
+      return false
+    }
   }
 
   repr(): string {
