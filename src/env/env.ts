@@ -7,6 +7,10 @@ export class Env {
     this.exps = exps
   }
 
+  free_names(): Set<string> {
+    return new Set(this.exps.keys())
+  }
+
   extend(name: string, value: Exp): Env {
     return new Env(new Map([...this.exps, [name, value]]))
   }

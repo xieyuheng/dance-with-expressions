@@ -7,5 +7,8 @@ export abstract class Exp {
   abstract subst(name: string, exp: Exp): Exp
   abstract evaluate(env: Env): Exp
   abstract beta_step(): Exp
+  // abstract beta_step(env: Env): Exp
+  // abstract normalized_p(): boolean
+  // abstract normalize(env: Env): Exp
   abstract repr(): string
 }

@@ -1,7 +1,15 @@
-- be able to `eta_step` exp
+- `Exp.subst` take `env`
+
+- `Exp.evaluate` knows free names in `env`
+- `beta_step` take `env`
 
 - `Exp.normalize` by `beta_step`
-- `Exp.normalize` by `beta_et_step`
+
+- `Exp.normalized_p`
+
+- be able to `eta_step` exp
+
+- `Exp.normalize` by `beta_step` & `eta_step`
 
 - use lean to prove classic theorems about lambda calculus
 
