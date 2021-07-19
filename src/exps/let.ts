@@ -45,7 +45,7 @@ export class Let extends Exp {
   }
 
   beta_step(): Exp {
-    throw new Error("TODO")
+    return this.ret.subst(this.name, this.exp)
   }
 
   repr(): string {

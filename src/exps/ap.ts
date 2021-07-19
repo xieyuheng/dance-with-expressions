@@ -49,7 +49,7 @@ export class Ap extends Exp {
     if (this.target instanceof Exps.Fn) {
       return this.target.ret.subst(this.target.name, this.arg)
     } else {
-      throw new Error("TODO")
+      return new Ap(this.target.beta_step(), this.arg)
     }
   }
 

@@ -1,4 +1,3 @@
-- be able to `beta_step` exp
 - be able to `eta_step` exp
 
 - `Exp.normalize` by `beta_step`
