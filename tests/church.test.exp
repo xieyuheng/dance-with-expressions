@@ -37,3 +37,9 @@ add1(zero)
 
 three
 add1(add1(add1(zero)))
+
+eight
+add(two, six)
+add(four, four)
+mul(two, four)
+mul(four, two)
