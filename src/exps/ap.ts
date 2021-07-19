@@ -70,9 +70,7 @@ export class Ap extends Exp {
     )
   }
 
-  private multi_ap(
-    args: Array<Exp> = new Array()
-  ): {
+  private multi_ap(args: Array<Exp> = new Array()): {
     target: Exp
     args: Array<Exp>
   } {

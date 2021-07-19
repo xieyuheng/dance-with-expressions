@@ -9,12 +9,20 @@ export abstract class Exp {
   abstract free_names(bound_names?: Set<string>): Set<string>
   // NOTE We need to pass `global_free_names` to `subst`,
   //   because all free names should be protected.
+
   abstract subst(global_free_names: Set<string>, name: string, exp: Exp): Exp
   abstract evaluate(env: Env): Exp
+
   // NOTE One step should only eliminate one reduction target.
+
   abstract beta_reduction_step(env: Env): Exp
-  // TODO abstract eta_reduction_step(env: Env): Exp
   abstract beta_normal_form_p(env: Env): boolean
+
+  // TODO abstract eta_reduction_step(env: Env): Exp
+  // TODO abstract eta_normal_form_p(env: Env): boolean
+
+  // TODO beta_eta_reduction_step(env: Env): Exp
+
   abstract repr(): string
 
   normalize(env: Env): Exp {
