@@ -1,5 +1,3 @@
-- change reduction strategy for strong normalization
-
 - be able to `step` exp
 
 - use lean to prove classic theorems about lambda calculus

@@ -27,18 +27,19 @@ export class Ap extends Exp {
 
   evaluate(env: Env): Exp {
     const target = evaluate(env, this.target)
-    const arg = evaluate(env, this.arg)
     if (target instanceof Exps.Fn) {
-      const ret = target.ret.subst(target.name, arg)
+      const ret = target.ret.subst(target.name, this.arg)
       return evaluate(env, ret)
     } else {
       throw new Trace(
         [
           `I can not apply target because it is not a function.`,
           `target:`,
+          `  ${this.target.repr()}`,
+          `target reduced:`,
           `  ${target.repr()}`,
           `arg:`,
-          `  ${arg.repr()}`,
+          `  ${this.arg.repr()}`,
         ].join("\n")
       )
     }
