@@ -1,3 +1,17 @@
+# equivalent theory of lambda calculus
+
+miranda
+
+# normalization property
+
+a rewrite system has the (strong) normalization property or is terminating if every term is strongly normalizing;
+that is, if every sequence of rewrites eventually terminates with an irreducible term, also called a normal form.
+
+A rewrite system may also have the weak normalization property,
+meaning that for every term, there exists at least one particular sequence of rewrites that eventually yields a normal form, i.e., an irreducible term.
+
+The pure untyped lambda calculus does not satisfy the strong normalization property, and not even the weak normalization property.
+
 # invariants
 
 表达式之舞

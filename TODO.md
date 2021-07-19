@@ -1,3 +1,5 @@
+- we should use one `reduction_step` function to handle both beta and eta
+
 - be able to `eta_reduction_step` exp
 
 - `Exp.normalize` also handle `eta_reduction_step`
