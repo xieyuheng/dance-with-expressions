@@ -18,6 +18,14 @@ export class Var extends Exp {
     }
   }
 
+  subst(name: string, exp: Exp): Exp {
+    if (name === this.name) {
+      return exp
+    } else {
+      return this
+    }
+  }
+
   evaluate(env: Env): Exp {
     const exp = env.lookup_exp(this.name)
     if (exp === undefined) {
@@ -30,14 +38,6 @@ export class Var extends Exp {
     }
 
     return exp
-  }
-
-  subst(name: string, exp: Exp): Exp {
-    if (name === this.name) {
-      return exp
-    } else {
-      return this
-    }
   }
 
   repr(): string {

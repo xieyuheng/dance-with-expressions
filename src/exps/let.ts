@@ -22,11 +22,6 @@ export class Let extends Exp {
     ])
   }
 
-  evaluate(env: Env): Exp {
-    const exp = evaluate(env, this.exp)
-    return evaluate(env, this.ret.subst(this.name, exp))
-  }
-
   subst(name: string, exp: Exp): Exp {
     if (name === this.name) {
       return new Let(this.name, this.exp.subst(name, exp), this.ret)
@@ -40,6 +35,11 @@ export class Let extends Exp {
         this.ret.subst(this.name, new Exps.Var(fresh_name)).subst(name, exp)
       )
     }
+  }
+
+  evaluate(env: Env): Exp {
+    const exp = evaluate(env, this.exp)
+    return evaluate(env, this.ret.subst(this.name, exp))
   }
 
   repr(): string {
