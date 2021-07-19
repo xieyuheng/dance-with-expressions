@@ -12,8 +12,7 @@ export class Def implements Stmt {
   }
 
   async execute(mod: Module): Promise<void> {
-    const exp = evaluate(mod.env, this.exp)
-    mod.env = mod.env.extend(this.name, exp)
+    mod.env = mod.env.extend(this.name, this.exp)
     mod.enter(this)
   }
 }

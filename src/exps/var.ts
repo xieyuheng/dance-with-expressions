@@ -41,6 +41,7 @@ export class Var extends Exp {
   }
 
   beta_reduction_step(env: Env): Exp {
+    // NOTE Lookuping a global variable is viewed as a `beta_reduction_step`.
     const exp = env.lookup_exp(this.name)
     if (exp === undefined) {
       return this

@@ -1,7 +1,7 @@
 import { Env } from "../env"
 
 // NOTE The use of `Env` here, is for global variables, not for closure.
-// Maybe we should name it `EvaluationCtx` instead of `Env`.
+// The word "env" means "evaluation context" by tradition.
 
 export abstract class Exp {
   instanceofExp = true
