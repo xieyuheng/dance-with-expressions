@@ -4,13 +4,19 @@
 
 - example about this `eta_reduction_step`
 
-- use lean to prove classic theorems about lambda calculus
+# frontend
+
+- dance with expressions
 
 # reading
 
 - to mock a mocking bird
 - diagonalization-and-self-reference
 - curry haskell's book
+
+# theorems
+
+- use lean to prove classic theorems about lambda calculus
 
 # problem
 
