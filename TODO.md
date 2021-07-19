@@ -1,4 +1,4 @@
-- `Exp.normalize` by `beta_reduction_step` and `normal_form_p` and a while loop
+- use `Exp.normalize` in `Stmts.Show`
 
 - be able to `eta_reduction_step` exp
 
