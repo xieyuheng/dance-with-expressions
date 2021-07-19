@@ -1,4 +1,4 @@
-import { Exp } from "../exp"
+import { Exp, evaluate } from "../exp"
 import { Env } from "../env"
 import { Trace } from "../errors"
 
@@ -37,7 +37,7 @@ export class Var extends Exp {
       )
     }
 
-    return exp
+    return evaluate(env, exp)
   }
 
   beta_step(env: Env): Exp {
