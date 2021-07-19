@@ -52,7 +52,13 @@ export class Ap extends Exp {
     if (this.target instanceof Exps.Fn) {
       return this.target.ret.subst(env.free_names(), this.target.name, this.arg)
     } else {
-      return new Ap(this.target.beta_reduction_step(env), this.arg)
+      // NOTE We reduce `this.arg` only when `this.target` is not in normal form.
+      // Because one step should only eliminate one reduction target.
+      if (this.target.normal_form_p(env)) {
+        return new Ap(this.target, this.arg.beta_reduction_step(env))
+      } else {
+        return new Ap(this.target.beta_reduction_step(env), this.arg)
+      }
     }
   }
 
@@ -64,7 +70,9 @@ export class Ap extends Exp {
     )
   }
 
-  private multi_ap(args: Array<Exp> = new Array()): {
+  private multi_ap(
+    args: Array<Exp> = new Array()
+  ): {
     target: Exp
     args: Array<Exp>
   } {
