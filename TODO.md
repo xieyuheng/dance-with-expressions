@@ -1,5 +1,3 @@
-- use `@cicada-lang/librarian`
-
 - change reduction strategy for strong normalization
 
 - be able to `step` exp

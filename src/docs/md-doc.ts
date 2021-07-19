@@ -1,26 +1,33 @@
-import { Doc, DocEntry } from "../doc"
-import { Library } from "../library"
+import { Library, Doc } from "@cicada-lang/librarian"
+import { Module } from "../module"
+import { Stmt } from "../stmt"
 import * as Syntax from "../syntax"
 import * as commonmark from "commonmark"
 
-export class MdDoc extends Doc {
-  library: Library
+export class MdDoc extends Doc<Module> {
+  library: Library<Module>
   text: string
   path: string
 
-  constructor(opts: { library: Library; text: string; path: string }) {
+  constructor(opts: { library: Library<Module>; text: string; path: string }) {
     super()
     this.library = opts.library
     this.text = opts.text
     this.path = opts.path
   }
 
-  get entries(): Array<DocEntry> {
+  private get stmts(): Array<Stmt> {
     return this.code_blocks.flatMap((code_block) =>
-      Syntax.parse_stmts(code_block.text, code_block.offset).map(
-        (stmt) => new DocEntry({ stmt })
-      )
+      Syntax.parse_stmts(code_block.text, code_block.offset)
     )
+  }
+
+  async load(): Promise<Module> {
+    const mod = new Module({ doc: this })
+    for (const stmt of this.stmts) {
+      await stmt.execute(mod)
+    }
+    return mod
   }
 
   private offset_from_pos(row: number, col: number): number {
