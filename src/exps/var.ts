@@ -40,9 +40,13 @@ export class Var extends Exp {
     return exp
   }
 
-  beta_step(): Exp {
-    throw new Error()
-    return this
+  beta_step(env: Env): Exp {
+    const exp = env.lookup_exp(this.name)
+    if (exp === undefined) {
+      return this
+    }
+
+    return exp
   }
 
   repr(): string {

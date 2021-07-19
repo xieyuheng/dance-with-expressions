@@ -45,9 +45,8 @@ export class Let extends Exp {
     return evaluate(env, this.ret.subst(env.free_names(), this.name, exp))
   }
 
-  beta_step(): Exp {
-    throw new Error()
-    // return this.ret.subst(this.name, this.exp)
+  beta_step(env: Env): Exp {
+    return this.ret.subst(env.free_names(), this.name, this.exp)
   }
 
   repr(): string {

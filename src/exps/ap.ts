@@ -48,13 +48,12 @@ export class Ap extends Exp {
     }
   }
 
-  beta_step(): Exp {
-    throw new Error()
-    // if (this.target instanceof Exps.Fn) {
-    //   return this.target.ret.subst(this.target.name, this.arg)
-    // } else {
-    //   return new Ap(this.target.beta_step(), this.arg)
-    // }
+  beta_step(env: Env): Exp {
+    if (this.target instanceof Exps.Fn) {
+      return this.target.ret.subst(env.free_names(), this.target.name, this.arg)
+    } else {
+      return new Ap(this.target.beta_step(env), this.arg)
+    }
   }
 
   private multi_ap(args: Array<Exp> = new Array()): {

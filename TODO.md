@@ -1,5 +1,3 @@
-- `beta_step` take `env`
-
 - `Exp.normalize` by `beta_step`
 
 - `Exp.normalized_p`
