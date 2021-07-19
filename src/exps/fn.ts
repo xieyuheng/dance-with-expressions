@@ -13,7 +13,7 @@ export class Fn extends Exp {
     this.ret = ret
   }
 
-  free_names(bound_names: Set<string>): Set<string> {
+  free_names(bound_names: Set<string> = new Set()): Set<string> {
     return new Set([
       ...this.ret.free_names(new Set([...bound_names, this.name])),
     ])
@@ -28,7 +28,7 @@ export class Fn extends Exp {
       //   so that, it will not bound free names of the `exp`.
       const free_names = new Set([
         // ...env.free_names(),
-        ...exp.free_names(new Set()),
+        ...exp.free_names(),
       ])
       const fresh_name = ut.freshen_name(free_names, this.name)
       const ret = this.ret.subst(this.name, new Exps.Var(fresh_name))

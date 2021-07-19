@@ -10,7 +10,7 @@ export class Var extends Exp {
     this.name = name
   }
 
-  free_names(bound_names: Set<string>): Set<string> {
+  free_names(bound_names: Set<string> = new Set()): Set<string> {
     if (bound_names.has(this.name)) {
       return new Set()
     } else {
