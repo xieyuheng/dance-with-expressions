@@ -1,5 +1,7 @@
 - be able to `step` exp
 
+- normalization by `step`
+
 - use lean to prove classic theorems about lambda calculus
 
 # reading
