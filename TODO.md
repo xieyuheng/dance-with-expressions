@@ -1,6 +1,8 @@
-- be able to `step` exp
+- be able to `beta_step` exp
+- be able to `eta_step` exp
 
-- normalization by `step`
+- `Exp.normalize` by `beta_step`
+- `Exp.normalize` by `beta_et_step`
 
 - use lean to prove classic theorems about lambda calculus
 

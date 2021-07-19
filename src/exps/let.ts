@@ -26,13 +26,15 @@ export class Let extends Exp {
     if (name === this.name) {
       return new Let(this.name, this.exp.subst(name, exp), this.ret)
     } else {
-      const free_names = exp.free_names(new Set())
-      const fresh_name = ut.freshen_name(free_names, this.name)
-
+      // NOTE Before subst the `exp` into the `this.ret`, free names must be protected,
+      //   we must change `this.name` to a `fresh_name` relative to `exp`,
+      //   so that, it will not bound free names of the `exp`.
+      const fresh_name = ut.freshen_name(exp.free_names(new Set()), this.name)
+      const ret = this.ret.subst(this.name, new Exps.Var(fresh_name))
       return new Let(
         fresh_name,
         this.exp.subst(name, exp),
-        this.ret.subst(this.name, new Exps.Var(fresh_name)).subst(name, exp)
+        ret.subst(name, exp)
       )
     }
   }
