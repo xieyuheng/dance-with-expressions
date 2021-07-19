@@ -1,6 +1,3 @@
-- `Exp.subst` take `env`
-
-- `Exp.evaluate` knows free names in `env`
 - `beta_step` take `env`
 
 - `Exp.normalize` by `beta_step`

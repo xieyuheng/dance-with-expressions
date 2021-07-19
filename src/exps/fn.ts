@@ -19,20 +19,17 @@ export class Fn extends Exp {
     ])
   }
 
-  subst(name: string, exp: Exp): Exp {
+  subst(free_names: Set<string>, name: string, exp: Exp): Exp {
     if (name === this.name) {
       return this
     } else {
       // NOTE Before subst the `exp` into the `this.ret`, free names must be protected,
       //   we must change `this.name` to a `fresh_name` relative to `exp`,
       //   so that, it will not bound free names of the `exp`.
-      const free_names = new Set([
-        // ...env.free_names(),
-        ...exp.free_names(),
-      ])
+      free_names = new Set([...free_names, ...exp.free_names()])
       const fresh_name = ut.freshen_name(free_names, this.name)
-      const ret = this.ret.subst(this.name, new Exps.Var(fresh_name))
-      return new Fn(fresh_name, ret.subst(name, exp))
+      const ret = this.ret.subst(free_names, this.name, new Exps.Var(fresh_name))
+      return new Fn(fresh_name, ret.subst(free_names, name, exp))
     }
   }
 

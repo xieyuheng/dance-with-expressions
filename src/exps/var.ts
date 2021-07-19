@@ -18,7 +18,7 @@ export class Var extends Exp {
     }
   }
 
-  subst(name: string, exp: Exp): Exp {
+  subst(free_names: Set<string>, name: string, exp: Exp): Exp {
     if (name === this.name) {
       return exp
     } else {
@@ -41,6 +41,7 @@ export class Var extends Exp {
   }
 
   beta_step(): Exp {
+    throw new Error()
     return this
   }
 

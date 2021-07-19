@@ -21,14 +21,17 @@ export class Ap extends Exp {
     ])
   }
 
-  subst(name: string, exp: Exp): Exp {
-    return new Ap(this.target.subst(name, exp), this.arg.subst(name, exp))
+  subst(free_names: Set<string>, name: string, exp: Exp): Exp {
+    return new Ap(
+      this.target.subst(free_names, name, exp),
+      this.arg.subst(free_names, name, exp)
+    )
   }
 
   evaluate(env: Env): Exp {
     const target = evaluate(env, this.target)
     if (target instanceof Exps.Fn) {
-      const ret = target.ret.subst(target.name, this.arg)
+      const ret = target.ret.subst(env.free_names(), target.name, this.arg)
       return evaluate(env, ret)
     } else {
       throw new Trace(
@@ -46,11 +49,12 @@ export class Ap extends Exp {
   }
 
   beta_step(): Exp {
-    if (this.target instanceof Exps.Fn) {
-      return this.target.ret.subst(this.target.name, this.arg)
-    } else {
-      return new Ap(this.target.beta_step(), this.arg)
-    }
+    throw new Error()
+    // if (this.target instanceof Exps.Fn) {
+    //   return this.target.ret.subst(this.target.name, this.arg)
+    // } else {
+    //   return new Ap(this.target.beta_step(), this.arg)
+    // }
   }
 
   private multi_ap(args: Array<Exp> = new Array()): {
