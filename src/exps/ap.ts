@@ -54,7 +54,7 @@ export class Ap extends Exp {
     } else {
       // NOTE We reduce `this.arg` only when `this.target` is not in normal form.
       // Because one step should only eliminate one reduction target.
-      if (this.target.normal_form_p(env)) {
+      if (this.target.beta_normal_form_p(env)) {
         return new Ap(this.target, this.arg.beta_reduction_step(env))
       } else {
         return new Ap(this.target.beta_reduction_step(env), this.arg)
@@ -62,11 +62,11 @@ export class Ap extends Exp {
     }
   }
 
-  normal_form_p(env: Env): boolean {
+  beta_normal_form_p(env: Env): boolean {
     return (
-      this.target.normal_form_p(env) &&
+      this.target.beta_normal_form_p(env) &&
       !(this.target instanceof Exps.Fn) &&
-      this.arg.normal_form_p(env)
+      this.arg.beta_normal_form_p(env)
     )
   }
 

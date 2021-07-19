@@ -45,8 +45,8 @@ export class Fn extends Exp {
     return new Fn(this.name, this.ret.beta_reduction_step(env))
   }
 
-  normal_form_p(env: Env): boolean {
-    return this.ret.normal_form_p(env)
+  beta_normal_form_p(env: Env): boolean {
+    return this.ret.beta_normal_form_p(env)
   }
 
   private multi_fn(names: Array<string> = new Array()): {

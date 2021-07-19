@@ -53,7 +53,7 @@ export class Let extends Exp {
     return this.ret.subst(env.free_names(), this.name, this.exp)
   }
 
-  normal_form_p(env: Env): boolean {
+  beta_normal_form_p(env: Env): boolean {
     // NOTE A "let" expression can always be reduced,
     //   thus it is not normal form.
     return false

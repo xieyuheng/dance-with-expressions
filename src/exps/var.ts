@@ -49,7 +49,7 @@ export class Var extends Exp {
     }
   }
 
-  normal_form_p(env: Env): boolean {
+  beta_normal_form_p(env: Env): boolean {
     // NOTE Some variables are global to the module.
     // A global variable can still be reduced,
     //   thus it is not normal form.
