@@ -5,6 +5,9 @@
   "files": [
     "lib"
   ],
+  "bin": {
+    "dance": "bin/dance.js"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",

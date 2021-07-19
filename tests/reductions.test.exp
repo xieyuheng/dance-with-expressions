@@ -1,0 +1,9 @@
+// theta
+
+(x) { N(x) } (P) (Q)
+(x) { N(x)(Q) } (P)
+
+// gamma
+
+(x, y) { N(x, y) } (P)
+(y) { (x) { N(x, y) } (P) }
