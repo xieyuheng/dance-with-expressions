@@ -6,8 +6,9 @@ export abstract class Exp {
   abstract free_names(bound_names?: Set<string>): Set<string>
   abstract subst(free_names: Set<string>, name: string, exp: Exp): Exp
   abstract evaluate(env: Env): Exp
-  abstract beta_step(env: Env): Exp
-  // abstract normalized_p(): boolean
+  abstract beta_reduction_step(env: Env): Exp
+  // abstract eta_reduction_step(env: Env): Exp
+  // abstract normalized_p(env: Env): boolean
   // abstract normalize(env: Env): Exp
   abstract repr(): string
 }

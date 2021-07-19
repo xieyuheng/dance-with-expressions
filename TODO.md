@@ -1,10 +1,12 @@
-- `Exp.normalize` by `beta_step`
-
 - `Exp.normalized_p`
 
-- be able to `eta_step` exp
+- `Exp.normalize` by `beta_reduction_step` and `normalized_p` and a while loop
 
-- `Exp.normalize` by `beta_step` & `eta_step`
+- be able to `eta_reduction_step` exp
+
+- `Exp.normalize` also handle `eta_reduction_step`
+
+- example about this `eta_reduction_step`
 
 - use lean to prove classic theorems about lambda calculus
 

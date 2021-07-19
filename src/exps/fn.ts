@@ -37,8 +37,8 @@ export class Fn extends Exp {
     return this
   }
 
-  beta_step(env: Env): Exp {
-    return new Fn(this.name, this.ret.beta_step(env))
+  beta_reduction_step(env: Env): Exp {
+    return new Fn(this.name, this.ret.beta_reduction_step(env))
   }
 
   private multi_fn(names: Array<string> = new Array()): {

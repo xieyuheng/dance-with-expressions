@@ -45,7 +45,7 @@ export class Let extends Exp {
     return evaluate(env, this.ret.subst(env.free_names(), this.name, exp))
   }
 
-  beta_step(env: Env): Exp {
+  beta_reduction_step(env: Env): Exp {
     return this.ret.subst(env.free_names(), this.name, this.exp)
   }
 
