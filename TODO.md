@@ -10,6 +10,7 @@
 
 # theorems
 
+- read church's papers
 - prove classic theorems about lambda calculus
 - use lean to formalize proofs
 
