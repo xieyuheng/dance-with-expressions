@@ -1,8 +1,9 @@
 # frontend
 
-- setup vue3 by vue-cli
-- use `@cicada-lang/librarian`
+- setup tailwindcss
+- setup prettier
 - publish to vercel
+- use `@cicada-lang/librarian`
 
 # reading
 

@@ -1,7 +1,19 @@
-# 式之舞 / Dance with Expressions
+# dance-with-expressions
 
-> 我 <br>
-> 谢宇恒 <br>
-> 以此程序为誓 <br>
-> 不忘初心 <br>
-> 孜孜求索 <br>
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
