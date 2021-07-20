@@ -1,5 +1,5 @@
 <template>
-  <div class="font-bold">Hello Expressions!</div>
+  <div class="p-3 font-bold">Hello Expressions!</div>
 </template>
 
 <script lang="ts">
