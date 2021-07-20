@@ -3,12 +3,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent, defineAsyncComponent } from "vue"
 
 export default defineComponent({
   name: "app",
+  // prettier-ignore
   components: {
-    "hello-world": require("./components/hello-world.vue").default,
+    "hello-world": defineAsyncComponent(() => import("./components/hello-world.vue")),
   },
 })
 </script>
