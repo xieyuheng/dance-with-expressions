@@ -1,3 +1,7 @@
 evil = (x) { x(x) }
 
-evil(evil)
+evil
+
+// loop forever
+
+// evil(evil)
