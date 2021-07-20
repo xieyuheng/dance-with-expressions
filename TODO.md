@@ -10,7 +10,8 @@
 
 # theorems
 
-- use lean to prove classic theorems about lambda calculus
+- prove classic theorems about lambda calculus
+- use lean to formalize proofs
 
 # problem
 
