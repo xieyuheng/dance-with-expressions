@@ -1,6 +1,6 @@
 # frontend
 
-- dance with expressions
+- `web/` dir for frontend project `dance-with-expressions`
 
 # reading
 
