@@ -1,8 +1,6 @@
 # frontend
 
-- [maybe] quit using vite for dev server type check
-- [maybe] quit using vue3d
-- [maybe] use js instead of ts at frontend
+- setup vue3 by vue-cli
 - use `@cicada-lang/librarian`
 - publish to vercel
 
