@@ -1,6 +1,6 @@
 # frontend
 
-- publish `packages/exp` to `xieyuheng/exp`
+- use `@xieyuheng/exp` and `@cicada-lang/librarian`
 
 # reading
 

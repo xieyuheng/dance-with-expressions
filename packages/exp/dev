@@ -19,7 +19,7 @@ commands.t = async () => {
 commands.test_all = async () => {
   await commands.test_lib()
   await commands.test_snapshot()
-  await commands.test_dance()
+  await commands.test_exp()
 }
 
 commands.test_lib = async () => {
@@ -36,21 +36,21 @@ commands.test_snapshot = async () => {
   )
 }
 
-commands.test_dance = async () => {
+commands.test_exp = async () => {
   await test(
-    "./bin/dance.js run --no-module $file",
+    "./bin/exp.js run --no-module $file",
     { file: "tests/**/**.test.exp" },
     expect.ok
   )
 
   await test(
-    "./bin/dance.js run --no-module $file",
+    "./bin/exp.js run --no-module $file",
     { file: "tests/**/**.snapshot.exp" },
     snapshot.out(({ file }) => file + ".out")
   )
 
   await test(
-    "./bin/dance.js run --no-module $file",
+    "./bin/exp.js run --no-module $file",
     { file: "tests/**/**.error.exp" },
     snapshot.err(({ file }) => file + ".out")
   )
