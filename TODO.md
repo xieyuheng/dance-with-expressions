@@ -1,7 +1,6 @@
 # frontend
 
 - use `@cicada-lang/librarian`
-- use tailwind
 - publish to vercel
 
 # reading
