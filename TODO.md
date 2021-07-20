@@ -1,6 +1,7 @@
 # frontend
 
-- use `@xieyuheng/exp` and `@cicada-lang/librarian`
+- use `@cicada-lang/librarian`
+- use tailwind
 
 # reading
 
