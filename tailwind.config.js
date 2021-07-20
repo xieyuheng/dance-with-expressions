@@ -3,7 +3,8 @@ const colors = require("tailwindcss/colors")
 module.exports = {
   // NOTE We can not use purge,
   //   if we want our component to be imported by ohter projects.
-  purge: false,
+  // purge: false,
+  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
