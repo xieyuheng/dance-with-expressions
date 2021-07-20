@@ -1,6 +1,6 @@
 # frontend
 
-- `web/` dir for frontend project `dance-with-expressions`
+- publish `packages/exp` to `xieyuheng/exp`
 
 # reading
 
