@@ -1,6 +1,5 @@
 # frontend
 
-- publish to vercel
 - use `@cicada-lang/librarian`
 
 # reading
