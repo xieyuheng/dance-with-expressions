@@ -1,8 +1,14 @@
-A = (x) { f(x) }
-B = f
+A = f
+B = (x) { f(x) }
+C = f(x)
+D = (x) { f(x)(x) }
 
 A
 B
+C
+D
 
 A(a)
 B(a)
+C(a)
+D(a)

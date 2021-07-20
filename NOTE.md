@@ -1,6 +1,26 @@
 # equivalent theory of lambda calculus
 
-miranda
+alpha
+beta
+eta
+
+First Church-Rosser theorem
+
+- if normal form exists, normal form is unique.
+
+Second Church-Rosser theorem
+
+- leftmost redex reduction strategy is a normalizing strategy.
+
+Böhm theorem
+
+- if A, B have distinct beta eta normal forms,
+  then there is a context C[] that will separate them.
+  C[A] => K
+  C[B] => K(I)
+
+The above means, alpha beta eta conversion
+is the strongest possible equational theory on normalizing lambda terms.
 
 # normalization property
 
