@@ -1,5 +1,6 @@
 # frontend
 
+- use js instead of ts at frontend
 - use `@cicada-lang/librarian`
 - publish to vercel
 

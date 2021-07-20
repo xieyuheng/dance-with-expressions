@@ -1,5 +1,5 @@
 <template>
-  <hello-world msg="hello expressions" />
+  <home />
 </template>
 
 <script lang="ts">
@@ -9,7 +9,7 @@ export default defineComponent({
   name: "app",
   // prettier-ignore
   components: {
-    "hello-world": defineAsyncComponent(() => import("./components/hello-world.vue")),
+    "home": defineAsyncComponent(() => import("./views/home.vue")),
   },
 })
 </script>
