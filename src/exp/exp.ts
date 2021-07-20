@@ -15,20 +15,15 @@ export abstract class Exp {
 
   // NOTE One step should only eliminate one reduction target.
 
-  abstract beta_reduction_step(env: Env): Exp
-  abstract beta_normal_form_p(env: Env): boolean
-
-  // TODO abstract eta_reduction_step(env: Env): Exp
-  // TODO abstract eta_normal_form_p(env: Env): boolean
-
-  // TODO beta_eta_reduction_step(env: Env): Exp
+  abstract reduction_step(env: Env): Exp
+  abstract normal_form_p(env: Env): boolean
 
   abstract repr(): string
 
   normalize(env: Env): Exp {
     let exp: Exp = this
-    while (!exp.beta_normal_form_p(env)) {
-      exp = exp.beta_reduction_step(env)
+    while (!exp.normal_form_p(env)) {
+      exp = exp.reduction_step(env)
     }
 
     return exp

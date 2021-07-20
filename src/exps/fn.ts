@@ -41,12 +41,32 @@ export class Fn extends Exp {
     return this
   }
 
-  beta_reduction_step(env: Env): Exp {
-    return new Fn(this.name, this.ret.beta_reduction_step(env))
+  reduction_step(env: Env): Exp {
+    if (
+      this.ret instanceof Exps.Ap &&
+      this.ret.arg instanceof Exps.Var &&
+      this.ret.arg.name === this.name &&
+      !this.ret.target.free_names().has(this.name)
+    ) {
+      // NOTE The eta-reduction is implemented here.
+      return this.ret.target
+    } else {
+      return new Fn(this.name, this.ret.reduction_step(env))
+    }
   }
 
-  beta_normal_form_p(env: Env): boolean {
-    return this.ret.beta_normal_form_p(env)
+  normal_form_p(env: Env): boolean {
+    if (
+      this.ret instanceof Exps.Ap &&
+      this.ret.arg instanceof Exps.Var &&
+      this.ret.arg.name === this.name &&
+      !this.ret.target.free_names().has(this.name)
+    ) {
+      // NOTE We found an eta-reduction target.
+      return false
+    } else {
+      return this.ret.normal_form_p(env)
+    }
   }
 
   private multi_fn(names: Array<string> = new Array()): {

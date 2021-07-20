@@ -40,8 +40,7 @@ export class Var extends Exp {
     return evaluate(env, exp)
   }
 
-  beta_reduction_step(env: Env): Exp {
-    // NOTE Lookuping a global variable is viewed as a `beta_reduction_step`.
+  reduction_step(env: Env): Exp {
     const exp = env.lookup_exp(this.name)
     if (exp === undefined) {
       return this
@@ -50,7 +49,7 @@ export class Var extends Exp {
     }
   }
 
-  beta_normal_form_p(env: Env): boolean {
+  normal_form_p(env: Env): boolean {
     // NOTE Some variables are global to the module.
     // A global variable can still be reduced,
     //   thus it is not normal form.
