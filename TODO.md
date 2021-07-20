@@ -1,7 +1,5 @@
 # frontend
 
-- setup tailwindcss
-- setup prettier
 - publish to vercel
 - use `@cicada-lang/librarian`
 
