@@ -1,0 +1,12 @@
+// THE CALCULI OF LAMBDA CONVERSION
+
+I = (x) { x }
+K = (x, y) { x }
+T = (x, f) { f(x) }
+J = (f, x, y, z) { f(x)(f(z, y)) }
+B = (f, g, x) { f(g(x)) }
+C = (f, x, y) { f(y(x)) }
+W = (f, x) { f(x(x)) }
+S = (n, f, x) { f(n(f(x))) }
+
+I K T J B C W S
