@@ -1,5 +1,3 @@
-# frontend
-
 - use `@cicada-lang/librarian`
 
 # reading
