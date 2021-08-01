@@ -18,12 +18,13 @@ type Report = {
 }
 
 export class StageState {
-  library: null | GitLibrary<Module> = null
-  path: null | string = null
+  library: GitLibrary<Module>
+  path: string
   report: null | Report = null
 
-  constructor(opts: { library: GitLibrary<Module> }) {
+  constructor(opts: { library: GitLibrary<Module>; path: string }) {
     this.library = opts.library
+    this.path = opts.path
   }
 
   static async build(opts: {
@@ -32,51 +33,25 @@ export class StageState {
   }): Promise<StageState> {
     const { library_id, servant } = opts
 
-    if (servant === "github") {
-      return new StageState({
-        library: await GitHubLibrary.create(library_id, {
-          doc_builder,
-          module_viewer,
-        }),
-      }).init_path()
-    } else if (servant === "gitlab") {
-      return new StageState({
-        library: await GitLabLibrary.create(library_id, {
-          doc_builder,
-          module_viewer,
-        }),
-      }).init_path()
-    } else {
-      throw new Error(`Unknown servant: ${servant}`)
-    }
-  }
-
-  init_path(): this {
-    if (this.library) {
-      const paths = Object.keys(this.library.files)
-      this.path = paths[0] || null
+    const library = await createLibrary({ library_id, servant })
+    const paths = Object.keys(library.files)
+    if (paths.length === 0) {
+      throw new Error(`library has no files`)
     }
 
-    return this
+    return new StageState({ library, path: paths[0] })
   }
 
-  get text(): null | string {
-    if (!this.library) return null
-    if (!this.path) return null
-    return this.library.files[this.path] || null
+  get text(): string {
+    return this.library.files[this.path]
   }
 
-  set text(text: null | string) {
+  set text(text: string) {
     if (!text) return
-    if (!this.library) return
-    if (!this.path) return
     this.library.files[this.path] = text
   }
 
   async run(): Promise<void> {
-    if (!this.library) return
-    if (!this.path) return
-
     try {
       const mod = await this.library.reload(this.path)
       this.report = { output: mod.output }
@@ -99,5 +74,25 @@ export class StageState {
         this.report = { unknown_error: error }
       }
     }
+  }
+}
+
+async function createLibrary(opts: {
+  library_id: string
+  servant: string
+}): Promise<GitLibrary<Module>> {
+  const { library_id, servant } = opts
+  if (servant === "github") {
+    return await GitHubLibrary.create(library_id, {
+      doc_builder,
+      module_viewer,
+    })
+  } else if (servant === "gitlab") {
+    return await GitLabLibrary.create(library_id, {
+      doc_builder,
+      module_viewer,
+    })
+  } else {
+    throw new Error(`Unknown servant: ${servant}`)
   }
 }
