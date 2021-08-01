@@ -2,6 +2,7 @@
   "name": "@xieyuheng/exp",
   "version": "0.0.3",
   "repository": "github:xieyuheng/dance-with-expressions",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
