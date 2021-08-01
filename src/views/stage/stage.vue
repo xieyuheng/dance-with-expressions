@@ -2,9 +2,13 @@
   <div class="p-3 font-bold">Welcome to the Stage!</div>
   <div v-if="!state">Loading...</div>
   <div v-else>
-    <pre class="p-3">{{ state.text }}</pre>
+    <pre class="p-3 border-2 border-gray-400">{{ state.text }}</pre>
     <h2>// OUTPUT:</h2>
-    <pre v-if="state.report.output" class="p-3">{{ state.report.output }}</pre>
+    <pre
+      class="p-3 border-2 border-blue-400"
+      v-if="state.report && state.report.output"
+      >{{ state.report.output }}</pre
+    >
   </div>
 </template>
 
