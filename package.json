@@ -13,14 +13,12 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.3.3",
-    "@tailwindcss/postcss7-compat": "^2.2.4",
+    "@tailwindcss/postcss7-compat": "^2.2.7",
     "@tailwindcss/typography": "^0.4.1",
-    "autoprefixer": "^9",
+    "@xieyuheng/exp": "^0.0.2",
     "axios": "^0.21.1",
     "js-base64": "^3.6.1",
-    "postcss": "^7",
     "register-service-worker": "^1.7.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
