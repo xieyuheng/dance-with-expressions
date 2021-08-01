@@ -2,7 +2,14 @@ import { RouteRecordRaw } from "vue-router"
 
 const toplevel: Array<RouteRecordRaw> = [
   { path: "/", component: () => import("@/views/home") },
-  { path: "/stage", component: () => import("@/views/stage") },
+  {
+    path: "/stage",
+    component: () => import("@/views/stage"),
+    props: (route) => ({
+      servant: route.query.s,
+      library_id: route.query.p,
+    }),
+  },
 ]
 
 const catchall: Array<RouteRecordRaw> = []

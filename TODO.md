@@ -1,4 +1,5 @@
-- use `@cicada-lang/librarian`
+- `views/entrance`
+- [refactor] `stage-state`
 
 # reading
 
