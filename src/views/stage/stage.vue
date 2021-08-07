@@ -1,9 +1,9 @@
 <template>
-  <div class="p-3 font-bold">Welcome to the Stage!</div>
-  <div v-if="!state">Loading...</div>
+  <div class="m-3 font-bold">Welcome to the Stage!</div>
+  <stage-loading v-if="!state" class="m-3" />
   <div v-else class="flex flex-col items-start">
-    <stage-back :state="state" />
-    <stage-center :state="state" />
+    <stage-back :state="state" class="m-3" />
+    <stage-center :state="state" class="m-3" />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default defineComponent({
   name: "stage",
   // prettier-ignore
   components: {
+    "stage-loading": require("@/views/stage/stage-loading").default,
     "stage-back": require("@/views/stage/stage-back").default,
     "stage-center": require("@/views/stage/stage-center").default,
   },
@@ -28,11 +29,12 @@ export default defineComponent({
     }
   },
   async mounted(): Promise<void> {
-    this.state = await State.build({
+    const state = await State.build({
       servant: this.servant,
       library_id: this.library_id,
     })
-    await this.state.loadMod()
+    await state.loadMod()
+    this.state = state
   },
 })
 </script>
