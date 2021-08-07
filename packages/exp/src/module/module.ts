@@ -1,6 +1,7 @@
 import { Library, Doc } from "@cicada-lang/librarian"
 import { Stmt } from "../stmt"
 import { Env } from "../env"
+import { Exp } from "../exp"
 
 class ModuleEntry {
   stmt: Stmt
@@ -47,5 +48,9 @@ export class Module {
       .join("\n")
 
     return output ? output + "\n" : ""
+  }
+
+  step(exp: Exp): Exp {
+    return exp.step(this.env)
   }
 }

@@ -49,7 +49,7 @@ export class Let extends Exp {
     return evaluate(env, this.ret.subst(env.free_names(), this.name, exp))
   }
 
-  reduction_step(env: Env): Exp {
+  step(env: Env): Exp {
     return this.ret.subst(env.free_names(), this.name, this.exp)
   }
 

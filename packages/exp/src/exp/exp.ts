@@ -15,7 +15,7 @@ export abstract class Exp {
 
   // NOTE One step should only eliminate one reduction target.
 
-  abstract reduction_step(env: Env): Exp
+  abstract step(env: Env): Exp
   abstract normal_form_p(env: Env): boolean
 
   abstract repr(): string
@@ -23,7 +23,7 @@ export abstract class Exp {
   normalize(env: Env): Exp {
     let exp: Exp = this
     while (!exp.normal_form_p(env)) {
-      exp = exp.reduction_step(env)
+      exp = exp.step(env)
     }
 
     return exp

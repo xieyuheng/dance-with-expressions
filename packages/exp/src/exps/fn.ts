@@ -41,7 +41,7 @@ export class Fn extends Exp {
     return this
   }
 
-  reduction_step(env: Env): Exp {
+  step(env: Env): Exp {
     if (
       this.ret instanceof Exps.Ap &&
       this.ret.arg instanceof Exps.Var &&
@@ -51,7 +51,7 @@ export class Fn extends Exp {
       // NOTE The eta-reduction is implemented here.
       return this.ret.target
     } else {
-      return new Fn(this.name, this.ret.reduction_step(env))
+      return new Fn(this.name, this.ret.step(env))
     }
   }
 

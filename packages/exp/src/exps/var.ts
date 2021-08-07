@@ -40,7 +40,7 @@ export class Var extends Exp {
     return evaluate(env, exp)
   }
 
-  reduction_step(env: Env): Exp {
+  step(env: Env): Exp {
     const exp = env.lookup_exp(this.name)
     if (exp === undefined) {
       return this

@@ -48,7 +48,7 @@ export class Ap extends Exp {
     }
   }
 
-  reduction_step(env: Env): Exp {
+  step(env: Env): Exp {
     if (this.target instanceof Exps.Fn) {
       // NOTE The beta-reduction is implemented here.
       return this.target.ret.subst(env.free_names(), this.target.name, this.arg)
@@ -56,9 +56,9 @@ export class Ap extends Exp {
       // NOTE We reduce `this.arg` only when `this.target` is not in normal form.
       // Because one step should only eliminate one reduction target.
       if (this.target.normal_form_p(env)) {
-        return new Ap(this.target, this.arg.reduction_step(env))
+        return new Ap(this.target, this.arg.step(env))
       } else {
-        return new Ap(this.target.reduction_step(env), this.arg)
+        return new Ap(this.target.step(env), this.arg)
       }
     }
   }
