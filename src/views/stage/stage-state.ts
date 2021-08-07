@@ -21,11 +21,18 @@ export class StageState {
   library: GitLibrary<Module>
   path: string
   report: Report | null = null
+  expText: string = ""
   exp: Exp | null = null
+  // mod: Mod | null
 
-  constructor(opts: { library: GitLibrary<Module>; path: string }) {
+  constructor(opts: {
+    library: GitLibrary<Module>
+    path: string
+    // mod: Mod
+  }) {
     this.library = opts.library
     this.path = opts.path
+    // this.mod = opts.mod
   }
 
   static async build(opts: {
