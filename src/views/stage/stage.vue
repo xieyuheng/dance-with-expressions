@@ -9,13 +9,7 @@
       v-if="state.report && state.report.output"
       >{{ state.report.output }}</pre
     >
-    <textarea
-      v-model="state.expText"
-      placeholder="Enter the expression"
-    ></textarea>
-    <button @click="state.loadExp()">LOAD</button>
-    <pre v-if="state.exp">{{ state.exp.repr() }}</pre>
-    <button @click="state.step()">STEP</button>
+    <stage-center :state="state" />
   </div>
 </template>
 
@@ -25,6 +19,11 @@ import { StageState as State } from "./stage-state"
 
 export default defineComponent({
   name: "stage",
+  // prettier-ignore
+  components: {
+    // "stage-back": require("@/views/stage/stage-back").default,
+    "stage-center": require("@/views/stage/stage-center").default,
+  },
   props: {
     servant: { type: String, required: true },
     library_id: { type: String, required: true },

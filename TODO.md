@@ -1,5 +1,6 @@
-- `views/stage/state` improve style
+- extract `views/state/stage-back`
 
+- `views/state/stage-back`
 - `views/state/stage-center`
 
 # reading
