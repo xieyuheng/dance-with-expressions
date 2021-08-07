@@ -1,5 +1,5 @@
 <template>
-  <stage-header :state="state" class="m-3" />
+  <stage-header class="m-3" />
   <stage-loading v-if="!state" class="m-3" />
   <div v-else class="flex flex-col items-start">
     <stage-back :state="state" class="m-3" />

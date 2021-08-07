@@ -1,5 +1,3 @@
-- extract `views/state/stage-header`
-
 - `views/state/stage-header`
 - `views/state/stage-loading`
 
