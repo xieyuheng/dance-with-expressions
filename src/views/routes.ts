@@ -6,8 +6,8 @@ const toplevel: Array<RouteRecordRaw> = [
     path: "/stage",
     component: () => import("@/views/stage"),
     props: (route) => ({
-      servant: route.query.s,
-      library_id: route.query.p,
+      servant: route.query.servant,
+      library_id: route.query.library_id,
     }),
   },
 ]

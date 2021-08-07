@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, defineAsyncComponent, reactive, onMounted } from "vue"
+import { defineComponent } from "vue"
 import { StageState as State } from "./stage-state"
 
 export default defineComponent({
