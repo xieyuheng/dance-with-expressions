@@ -1,5 +1,5 @@
 <template>
-  <div class="m-3 font-bold">Welcome to the Stage!</div>
+  <stage-header :state="state" class="m-3" />
   <stage-loading v-if="!state" class="m-3" />
   <div v-else class="flex flex-col items-start">
     <stage-back :state="state" class="m-3" />
@@ -15,6 +15,7 @@ export default defineComponent({
   name: "stage",
   // prettier-ignore
   components: {
+    "stage-header": require("@/views/stage/stage-header").default,
     "stage-loading": require("@/views/stage/stage-loading").default,
     "stage-back": require("@/views/stage/stage-back").default,
     "stage-center": require("@/views/stage/stage-center").default,
