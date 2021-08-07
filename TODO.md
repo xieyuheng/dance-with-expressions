@@ -1,5 +1,3 @@
-- extract `views/state/stage-back`
-
 - `views/state/stage-back`
 - `views/state/stage-center`
 

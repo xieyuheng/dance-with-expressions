@@ -2,13 +2,7 @@
   <div class="p-3 font-bold">Welcome to the Stage!</div>
   <div v-if="!state">Loading...</div>
   <div v-else class="flex flex-col items-start">
-    <pre class="p-3 border-2 border-gray-400">{{ state.text }}</pre>
-    <h2>// OUTPUT:</h2>
-    <pre
-      class="p-3 border-2 border-blue-400"
-      v-if="state.report && state.report.output"
-      >{{ state.report.output }}</pre
-    >
+    <stage-back :state="state" />
     <stage-center :state="state" />
   </div>
 </template>
@@ -21,7 +15,7 @@ export default defineComponent({
   name: "stage",
   // prettier-ignore
   components: {
-    // "stage-back": require("@/views/stage/stage-back").default,
+    "stage-back": require("@/views/stage/stage-back").default,
     "stage-center": require("@/views/stage/stage-center").default,
   },
   props: {
