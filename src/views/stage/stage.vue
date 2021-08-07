@@ -1,7 +1,7 @@
 <template>
   <div class="p-3 font-bold">Welcome to the Stage!</div>
   <div v-if="!state">Loading...</div>
-  <div v-else>
+  <div v-else class="flex flex-col items-start">
     <pre class="p-3 border-2 border-gray-400">{{ state.text }}</pre>
     <h2>// OUTPUT:</h2>
     <pre
@@ -9,6 +9,13 @@
       v-if="state.report && state.report.output"
       >{{ state.report.output }}</pre
     >
+    <textarea
+      v-model="state.expText"
+      placeholder="Enter the expression"
+    ></textarea>
+    <button @click="state.loadExp()">LOAD</button>
+    <pre v-if="state.exp">{{ state.exp.repr() }}</pre>
+    <button @click="state.step()">STEP</button>
   </div>
 </template>
 
@@ -32,7 +39,7 @@ export default defineComponent({
       servant: this.servant,
       library_id: this.library_id,
     })
-    this.state.run()
+    await this.state.loadMod()
   },
 })
 </script>

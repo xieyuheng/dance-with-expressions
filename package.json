@@ -16,7 +16,7 @@
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/postcss7-compat": "^2.2.7",
     "@tailwindcss/typography": "^0.4.1",
-    "@xieyuheng/exp": "^0.0.6",
+    "@xieyuheng/exp": "^0.0.7",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "js-base64": "^3.6.1",

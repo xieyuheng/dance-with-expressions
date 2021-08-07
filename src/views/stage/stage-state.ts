@@ -1,38 +1,24 @@
 import { GitLibrary } from "@cicada-lang/librarian"
 import { GitLabLibrary } from "@cicada-lang/librarian/lib/git-libraries"
 import { GitHubLibrary } from "@cicada-lang/librarian/lib/git-libraries"
-import { Exp, Module, Trace, doc_builder, module_viewer } from "@xieyuheng/exp"
+import { Module, Trace, doc_builder, module_viewer } from "@xieyuheng/exp"
+import { Exp, Syntax } from "@xieyuheng/exp"
 import pt, { ParsingError } from "@cicada-lang/partech"
-
-type Report = {
-  output?: string
-  semantic_error?: {
-    message: string
-    previous_expressions: Array<string>
-  }
-  syntax_error?: {
-    message: string
-    context?: string
-  }
-  unknown_error?: Error
-}
 
 export class StageState {
   library: GitLibrary<Module>
   path: string
+
+  mod: Module | null = null
   report: Report | null = null
+
   expText: string = ""
   exp: Exp | null = null
-  // mod: Mod | null
+  expError: ParsingError | null = null
 
-  constructor(opts: {
-    library: GitLibrary<Module>
-    path: string
-    // mod: Mod
-  }) {
+  constructor(opts: { library: GitLibrary<Module>; path: string }) {
     this.library = opts.library
     this.path = opts.path
-    // this.mod = opts.mod
   }
 
   static async build(opts: {
@@ -43,11 +29,10 @@ export class StageState {
 
     const library = await createLibrary({ library_id, servant })
     const paths = Object.keys(library.files)
-    if (paths.length === 0) {
-      throw new Error(`library has no files`)
-    }
+    if (paths.length === 0) throw new Error("library has no files")
+    const path = paths[0]
 
-    return new StageState({ library, path: paths[0] })
+    return new StageState({ library, path })
   }
 
   get text(): string {
@@ -59,34 +44,76 @@ export class StageState {
     this.library.files[this.path] = text
   }
 
-  step(): void {
-    // TODO
+  async loadMod(): Promise<void> {
+    const result = await loadMod({ library: this.library, path: this.path })
+    if (result instanceof Module) {
+      this.mod = result
+    } else {
+      this.report = result
+    }
   }
 
-  async run(): Promise<void> {
+  loadExp(): void {
     try {
-      const mod = await this.library.reload(this.path)
-      this.report = { output: mod.output }
+      this.exp = Syntax.parse_exp(this.expText)
     } catch (error) {
-      if (error instanceof Trace) {
-        this.report = {
-          semantic_error: {
-            message: error.message,
-            previous_expressions: error.previous.map((exp) => exp.repr()),
-          },
-        }
-      } else if (error instanceof ParsingError) {
-        this.report = {
-          syntax_error: {
-            message: error.message.trim(),
-            context: this.text ? pt.report(error.span, this.text) : undefined,
-          },
-        }
+      if (error instanceof ParsingError) {
+        this.expError = error
       } else {
-        this.report = { unknown_error: error }
+        throw error
       }
     }
   }
+
+  step(): void {
+    if (this.mod && this.exp) {
+      this.exp = this.mod.step(this.exp)
+    }
+  }
+}
+
+async function loadMod(opts: {
+  library: GitLibrary<Module>
+  path: string
+}): Promise<Module | Report> {
+  const { library, path } = opts
+  const text = await library.fetch_file(path)
+
+  try {
+    return await library.reload(path)
+  } catch (error) {
+    if (error instanceof Trace) {
+      return {
+        semantic_error: {
+          message: error.message,
+          previous_expressions: error.previous.map((exp) => exp.repr()),
+        },
+      }
+    } else if (error instanceof ParsingError) {
+      return {
+        syntax_error: {
+          message: error.message.trim(),
+          context: pt.report(error.span, text),
+        },
+      }
+    } else {
+      return {
+        unknown_error: error,
+      }
+    }
+  }
+}
+
+type Report = {
+  semantic_error?: {
+    message: string
+    previous_expressions: Array<string>
+  }
+  syntax_error?: {
+    message: string
+    context: string
+  }
+  unknown_error?: Error
 }
 
 async function createLibrary(opts: {

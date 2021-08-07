@@ -1,6 +1,6 @@
-- be able to step an expression
+- `views/stage/state` improve style
 
-- [refactor] `stage-state`
+- `views/state/stage-center`
 
 # reading
 
