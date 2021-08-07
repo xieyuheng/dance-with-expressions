@@ -1,7 +1,7 @@
 import { GitLibrary } from "@cicada-lang/librarian"
 import { GitLabLibrary } from "@cicada-lang/librarian/lib/git-libraries"
 import { GitHubLibrary } from "@cicada-lang/librarian/lib/git-libraries"
-import { Module, Trace, doc_builder, module_viewer } from "@xieyuheng/exp"
+import { Exp, Module, Trace, doc_builder, module_viewer } from "@xieyuheng/exp"
 import pt, { ParsingError } from "@cicada-lang/partech"
 
 type Report = {
@@ -20,7 +20,8 @@ type Report = {
 export class StageState {
   library: GitLibrary<Module>
   path: string
-  report: null | Report = null
+  report: Report | null = null
+  exp: Exp | null = null
 
   constructor(opts: { library: GitLibrary<Module>; path: string }) {
     this.library = opts.library
@@ -49,6 +50,10 @@ export class StageState {
   set text(text: string) {
     if (!text) return
     this.library.files[this.path] = text
+  }
+
+  step(): void {
+    // TODO
   }
 
   async run(): Promise<void> {
