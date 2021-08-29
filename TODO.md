@@ -1,8 +1,14 @@
+# frontend dance
+
 - `views/state/stage-header`
 - `views/state/stage-loading`
 
 - `views/state/stage-back`
 - `views/state/stage-center`
+
+# later
+
+- try `(env: Env) => Exp` as `Value` -- no closure
 
 # reading
 
@@ -12,9 +18,15 @@
 
 # theorems
 
-- read church's papers
 - prove classic theorems about lambda calculus
-- use lean to formalize proofs
+
+- use lean to prove classic theorems about lambda calculus
+
+- [maybe] read church's papers
+
+- use graph to implement lambda calculus
+  - prove theorems about lambda calculus for both graph and tree syntax, and compare the proofs
+  - we need to implement a graph library -- with API designed to implement lambda calculus and other rewrite systems
 
 # problem
 
