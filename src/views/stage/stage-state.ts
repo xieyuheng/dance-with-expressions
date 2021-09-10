@@ -57,6 +57,8 @@ export class StageState {
     try {
       this.exp = Syntax.parse_exp(this.expText)
     } catch (error) {
+      if (!(error instanceof Error)) throw error
+
       if (error instanceof ParsingError) {
         this.expError = error
       } else {
@@ -97,6 +99,8 @@ async function loadMod(opts: {
         },
       }
     } else {
+      if (!(error instanceof Error)) throw error
+
       return {
         unknown_error: error,
       }

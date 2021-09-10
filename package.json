@@ -14,15 +14,15 @@
   "dependencies": {
     "@cicada-lang/librarian": "^0.0.13",
     "@tailwindcss/forms": "^0.3.3",
-    "@tailwindcss/postcss7-compat": "^2.2.7",
+    "@tailwindcss/postcss7-compat": "^2.2.14",
     "@tailwindcss/typography": "^0.4.1",
     "@xieyuheng/exp": "^0.0.7",
     "autoprefixer": "^9.8.6",
-    "axios": "^0.21.1",
-    "js-base64": "^3.6.1",
+    "axios": "^0.21.4",
+    "js-base64": "^3.7.0",
     "postcss": "^7.0.36",
     "register-service-worker": "^1.7.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -30,9 +30,9 @@
     "@vue/cli-plugin-router": "~4.5.13",
     "@vue/cli-plugin-typescript": "~4.5.13",
     "@vue/cli-service": "~4.5.13",
-    "@vue/compiler-sfc": "^3.2.1",
-    "prettier": "^2.3.2",
+    "@vue/compiler-sfc": "^3.2.11",
+    "prettier": "^2.4.0",
     "prettier-plugin-tailwind-css": "^1.5.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.4.2"
   }
 }
