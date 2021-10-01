@@ -1,0 +1,28 @@
+// THE CALCULI OF LAMBDA CONVERSION
+
+I = (x) { x }
+H = (x, y) { I }
+K = (x, y) { x }
+T = (x, f) { f(x) }
+J = (f, x, y, z) { f(x)(f(z, y)) }
+B = (f, g, x) { f(g(x)) } // product, resultant
+C = (f, x, y) { f(y(x)) } // converse
+W = (f, x) { f(x(x)) }
+S = (n, f, x) { f(n(f(x))) }
+
+Id = (f, x) { f(x) } // church name this function "1" -- like `I` but only apply to function
+// Note that, under eta reduction -- `Id` is `I`
+
+B(I, I)
+
+B(I) // is `Id`
+C(K) // is `H`
+C(T) // is `Id`
+
+C(Id) // is `T`
+C(I) // is `T`
+
+// `Id` and `I` have the same converse is explained by the fact that, while not the same function,
+// they have the same effect in all cases where they can significantly be applied to two arguments.
+
+B(C, C, I) // is `Id`
