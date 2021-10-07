@@ -1,10 +1,4 @@
-# frontend dance
-
-- `views/state/stage-header`
-- `views/state/stage-loading`
-
-- `views/state/stage-back`
-- `views/state/stage-center`
+- remove `cicada-lang/librarian` use `@xieyuheng/enchanter`
 
 # later
 

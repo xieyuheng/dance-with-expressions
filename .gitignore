@@ -1,23 +1,15 @@
-.DS_Store
+# typescript
+lib
+
+# npm
 node_modules
-/dist
 
+# 0x
+*.0x/
 
-# local env files
-.env.local
-.env.*.local
+# emacs
+*~
+*#*
+.#*
 
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.vercel
